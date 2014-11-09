@@ -1,10 +1,11 @@
-package main
+package orange
 
 import (
 	"fmt"
-	goWs "github.com/gorilla/websocket"
 	"net/http"
 	"time"
+
+	goWs "github.com/gorilla/websocket"
 )
 
 const (

@@ -1,8 +1,11 @@
-package main
+package orange
 
 import (
 	"github.com/russross/blackfriday"
 )
+
+// Global Converter
+var MdConverter = NewMarkdownConverter()
 
 type MarkdownConverter struct {
 	convert func([]byte) []byte
@@ -19,6 +22,3 @@ func (md *MarkdownConverter) UseBasic() {
 func (md *MarkdownConverter) Convert(raw []byte) []byte {
 	return md.convert(raw)
 }
-
-// Global Converter
-var MdConverter *MarkdownConverter = NewMarkdownConverter()

@@ -1,14 +1,14 @@
-package orange_cat_test
+package orange_test
 
 import (
-	. "../"
-
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
+	. "."
 
 	"net/http"
 	"strconv"
 	"time"
+
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
 )
 
 var _ = Describe("Orange", func() {

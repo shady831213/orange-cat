@@ -1,16 +1,17 @@
 package main
 
 import (
-	"github.com/codegangsta/cli"
 	"os"
-)
 
-const Version = "0.2.1-dev"
+	"github.com/codegangsta/cli"
+
+	"github.com/noraesae/orange-cat"
+)
 
 func main() {
 	app := cli.NewApp()
 	app.Name = "orange"
-	app.Version = Version
+	app.Version = orange.Version
 	app.Usage = `orange-cat is a Markdown previewer written in Go.
    Its main goal is to be used with any editor you love.
    For information, please visit https://github.com/noraesae/orange-cat`
@@ -28,7 +29,7 @@ func main() {
 	app.Action = func(c *cli.Context) {
 		args := c.Args()
 
-		orange := NewOrange(c.Int("port"))
+		orange := orange.NewOrange(c.Int("port"))
 
 		if c.Bool("basic") {
 			orange.UseBasic()
