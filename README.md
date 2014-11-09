@@ -56,9 +56,16 @@ I sincerely hope you like `orange-cat` :)
 You can download binaries for your environment in
 [Releases](https://github.com/noraesae/orange-cat/releases).
 
-If you prefer to build from source, it's also very easy.
+If you're using Go, you can just go get `orange-cat`.
 
 ```
+$ go get github.com/noraesae/orange-cat/cmd/orange
+```
+
+If you prefer building from source, it's also very easy.
+
+```
+$ cd $GOPATH/src/github.com/noraesae
 $ git clone git@github.com:noraesae/orange-cat.git
 $ cd orange-cat
 $ make build
