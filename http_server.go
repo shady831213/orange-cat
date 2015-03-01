@@ -81,7 +81,7 @@ func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		NewWebsocket(path).Serve(w, r)
 	} else {
 		if strings.HasSuffix(path, ".md") || strings.HasSuffix(path, ".markdown") {
-			Template(w, path, s.port)
+			Template(w, path)
 		} else {
 			s.ServeStatic(w, path)
 		}

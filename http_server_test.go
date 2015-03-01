@@ -88,7 +88,7 @@ var _ = Describe("HTTPServer", func() {
 			defer resp.Body.Close()
 			content, _ := ioutil.ReadAll(resp.Body)
 			w := TestResponseWriter{}
-			Template(&w, readme, port)
+			Template(&w, readme)
 			Expect(string(content)).To(Equal(w.data))
 
 			server.Stop()

@@ -10,7 +10,7 @@ import (
 	"text/template"
 )
 
-func Template(w http.ResponseWriter, filepath string, port int) {
+func Template(w http.ResponseWriter, filepath string) {
 	var style string
 	if css, err := CustomCSS(); err == nil {
 		style = *css
@@ -24,20 +24,20 @@ func Template(w http.ResponseWriter, filepath string, port int) {
 <head>
   <meta charset='UTF-8' />
   <title>%[1]s</title>
-  %[3]s
+  %[2]s
 </head>
 <body>
   <div id='md' class='markdown-body'></div>
   <script>
     (function () {
       var markdown = document.getElementById("md");
-      var conn = new WebSocket("ws://localhost:%[2]d/%[1]s");
+      var conn = new WebSocket("ws://" + location.host + "/%[1]s");
       conn.onmessage = function (evt) {
         markdown.innerHTML = evt.data;
       };
     })();
   </script>
-</body>`, filepath, port, style)
+</body>`, filepath, style)
 
 	var (
 		t   *template.Template

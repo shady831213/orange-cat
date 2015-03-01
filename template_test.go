@@ -18,11 +18,11 @@ var _ = Describe("Template", func() {
 		It("should write the result of the template to a writer.", func() {
 			w := TestResponseWriter{}
 
-			Template(&w, "temp_file.md", 1234)
+			Template(&w, "temp_file.md")
 
 			Expect(strings.Contains(w.data, "<title>temp_file.md</title>")).
 				To(Equal(true))
-			Expect(strings.Contains(w.data, "var conn = new WebSocket(\"ws://localhost:1234/temp_file.md\");")).
+			Expect(strings.Contains(w.data, "/temp_file.md")).
 				To(Equal(true))
 		})
 
@@ -35,13 +35,13 @@ var _ = Describe("Template", func() {
 			// Without a custom CSS
 			notExist := os.Rename(CustomCSSPath(), CustomCSSPath()+"_")
 			w := TestResponseWriter{}
-			Template(&w, "temp_file.md", 1234)
+			Template(&w, "temp_file.md")
 			Expect(strings.Contains(w.data, "<style>")).To(Equal(true))
 
 			// With a custom CSS
 			os.Create(CustomCSSPath())
 			w = TestResponseWriter{}
-			Template(&w, "temp_file.md", 1234)
+			Template(&w, "temp_file.md")
 			customCSS, _ := CustomCSS()
 			Expect(strings.Contains(w.data, *customCSS)).To(Equal(true))
 
