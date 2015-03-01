@@ -8,7 +8,7 @@ import (
 
 const (
 	MarkdownChanSize = 3
-	Version          = "0.2.1-dev"
+	Version          = "0.2.2"
 )
 
 func NewOrange(port int) *Orange {
