@@ -55,7 +55,7 @@ xctoolchain: gox
 xc: deps gox
 	@echo "$(OK_COLOR)==> Compiling into multiple targets$(NO_COLOR)"
 	@go get github.com/mitchellh/gox
-	@gox -osarch=$(XC_ARCH) -output="./out/{{.OS}}_{{.Arch}}/orange"
+	@gox -osarch=$(XC_ARCH) -output="./out/{{.OS}}_{{.Arch}}/orange" ./cmd/orange
 	@scripts/zip_output.sh
 	@echo "$(OK_COLOR) => Done$(NO_COLOR)"
 
