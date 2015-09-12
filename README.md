@@ -13,6 +13,15 @@ GitHub suggested naming it as `orange-cat`.
 
 GitHub is always right and I had to obey it.
 
+## Project Status
+
+This project is not being actively maintained, as I decided to port
+`orange-cat` to Node.js. Please refer to the [Node.js Port](#nodejs-port)
+section for the detail.
+
+If interested in the Node.js port, please check out
+[pen](https://github.com/noraesae/pen).
+
 ## Demo
 
 ![demo](http://i.imgur.com/qETC9A4.gif)
@@ -78,6 +87,18 @@ The binary `orange` will be created at `$GOPATH/bin/orange`.
 `orange-cat` will try to find a custom CSS file from
 `~/.orange-cat.css`. If there's no custom CSS file, it'll use a default
 CSS style, which shows a similar output to GitHub's one.
+
+## Node.js Port
+
+`orange-cat` has a Node.js port, [pen](https://github.com/noraesae/pen).
+Actually, it's not only a port, but has more functionality than `orange-cat`.
+The gap is mainly because `orange-cat` uses
+[Blackfriday](https://github.com/russross/blackfriday) as its Markdown parser.
+It lacks some important features and has minor bugs, although it's the best
+option among Go Markdown parsers.
+
+So, if you're familiar with Node.js and happy with `orange-cat`, please try
+[pen](https://github.com/noraesae/pen) too.
 
 ## Contribution
 
