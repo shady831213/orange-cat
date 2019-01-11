@@ -35,6 +35,9 @@ func Template(w http.ResponseWriter, filepath string) {
       conn.onmessage = function (evt) {
         markdown.innerHTML = evt.data;
       };
+	  window.onbeforeunload = function () {
+　　		conn.close();
+      }
     })();
   </script>
 </body>`, filepath, style)

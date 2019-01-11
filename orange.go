@@ -41,3 +41,8 @@ func (o *Orange) Stop() {
 	o.httpServer.Stop()
 	o.stop <- true
 }
+
+func (o *Orange) WaitAndStop() {
+	o.httpServer.WaitAndStop()
+	o.stop <- true
+}

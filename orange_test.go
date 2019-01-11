@@ -1,7 +1,7 @@
 package orange_test
 
 import (
-	. "."
+	. "orange-cat"
 
 	"net/http"
 	"strconv"

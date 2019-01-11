@@ -1,11 +1,10 @@
 package main
 
 import (
+	"orange-cat"
 	"os"
 
 	"github.com/codegangsta/cli"
-
-	"github.com/noraesae/orange-cat"
 )
 
 func main() {
@@ -35,7 +34,9 @@ func main() {
 			orange.UseBasic()
 		}
 
+		go orange.WaitAndStop()
 		orange.Run(args...)
+
 	}
 
 	// codegangsta/cli help template

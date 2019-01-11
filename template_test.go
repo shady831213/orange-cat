@@ -1,9 +1,8 @@
 package orange_test
 
 import (
-	. "."
-
 	"net/http"
+	. "orange-cat"
 	"os"
 	"os/user"
 	"path/filepath"

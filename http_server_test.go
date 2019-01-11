@@ -1,8 +1,6 @@
 package orange_test
 
 import (
-	. "."
-
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -10,6 +8,7 @@ import (
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	. "orange-cat"
 )
 
 var _ = Describe("HTTPServer", func() {

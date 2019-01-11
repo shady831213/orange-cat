@@ -19,11 +19,12 @@ var upgrader = goWs.Upgrader{
 }
 
 type Websocket struct {
-	watcher *Watcher
+	watcher      *Watcher
+	closeHandler func()
 }
 
-func NewWebsocket(path string) *Websocket {
-	return &Websocket{NewWatcher(path)}
+func NewWebsocket(path string, closeHandler func()) *Websocket {
+	return &Websocket{NewWatcher(path), closeHandler}
 }
 
 func (ws *Websocket) Reader(c *goWs.Conn, closed chan<- bool) {
@@ -50,6 +51,7 @@ func (ws *Websocket) Writer(c *goWs.Conn, closed <-chan bool) {
 				return
 			}
 		case <-closed:
+			ws.closeHandler()
 			return
 		}
 	}

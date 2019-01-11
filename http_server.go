@@ -8,6 +8,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -18,11 +19,19 @@ const (
 
 type HTTPServer struct {
 	port     int
+	openCnt  int
 	listener net.Listener
+	closed   chan struct{}
+	sync.Mutex
 }
 
 func NewHTTPServer(port int) *HTTPServer {
-	return &HTTPServer{port, nil}
+	inst := new(HTTPServer)
+	inst.port = port
+	inst.openCnt = 0
+	inst.listener = nil
+	inst.closed = make(chan struct{})
+	return inst
 }
 
 func (s *HTTPServer) Addr() string {
@@ -78,10 +87,24 @@ func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if path == "ping" {
 		w.Write([]byte("pong"))
 	} else if isWebsocketRequest(r) {
-		NewWebsocket(path).Serve(w, r)
+		NewWebsocket(path, func() {
+			s.Lock()
+			if s.openCnt > 0 {
+				s.openCnt --
+				if s.openCnt == 0 {
+					s.closed <- struct{}{}
+					s.Unlock()
+					return
+				}
+			}
+			s.Unlock()
+		}).Serve(w, r)
 	} else {
 		if strings.HasSuffix(path, ".md") || strings.HasSuffix(path, ".markdown") {
 			Template(w, path)
+			s.Lock()
+			s.openCnt++
+			s.Unlock()
 		} else {
 			s.ServeStatic(w, path)
 		}
@@ -108,6 +131,11 @@ func isWebsocketRequest(r *http.Request) bool {
 	upgrade := r.Header["Upgrade"]
 	connection := r.Header["Connection"]
 	return contains(upgrade, "websocket") && contains(connection, "Upgrade")
+}
+
+func (s *HTTPServer) WaitAndStop() {
+	<-s.closed
+	s.Stop()
 }
 
 func (s *HTTPServer) Stop() {

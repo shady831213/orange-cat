@@ -28,3 +28,9 @@ _testmain.go
 
 # output
 /out
+
+# ide
+.idea
+
+#target
+*orange
