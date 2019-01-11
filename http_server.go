@@ -90,7 +90,7 @@ func (s *HTTPServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		NewWebsocket(path, func() {
 			s.Lock()
 			if s.openCnt > 0 {
-				s.openCnt --
+				s.openCnt--
 				if s.openCnt == 0 {
 					s.closed <- struct{}{}
 					s.Unlock()
