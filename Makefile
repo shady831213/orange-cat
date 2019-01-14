@@ -20,7 +20,7 @@ fmt:
 
 test:
 	@echo "$(OK_COLOR)==> Testing modules$(NO_COLOR)"
-	@go test -ginkgo.v
+	@go test ./...
 	@echo "$(OK_COLOR) => Done$(NO_COLOR)"
 
 
