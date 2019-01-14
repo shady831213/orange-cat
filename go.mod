@@ -3,6 +3,8 @@ module github.com/utatti/orange-cat
 require (
 	github.com/codegangsta/cli v1.20.0
 	github.com/gorilla/websocket v1.4.0
+	github.com/mitchellh/gox v0.4.0 // indirect
+	github.com/mitchellh/iochan v1.0.0 // indirect
 	github.com/onsi/ginkgo v1.7.0
 	github.com/onsi/gomega v1.4.3
 	github.com/russross/blackfriday v1.5.2
