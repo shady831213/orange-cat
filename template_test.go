@@ -1,8 +1,8 @@
 package orange_test
 
 import (
-	"net/http"
 	. "github.com/utatti/orange-cat"
+	"net/http"
 	"os"
 	"os/user"
 	"path/filepath"
