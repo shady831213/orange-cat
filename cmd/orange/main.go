@@ -1,7 +1,7 @@
 package main
 
 import (
-	"orange-cat"
+	"github.com/utatti/orange-cat"
 	"os"
 
 	"github.com/codegangsta/cli"
