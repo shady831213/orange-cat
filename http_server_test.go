@@ -8,7 +8,7 @@ import (
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	. "orange-cat"
+	. "github.com/utatti/orange-cat"
 )
 
 var _ = Describe("HTTPServer", func() {

@@ -1,4 +1,4 @@
-module orange-cat
+module github.com/utatti/orange-cat
 
 require (
 	github.com/codegangsta/cli v1.20.0

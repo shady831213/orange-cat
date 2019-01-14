@@ -2,7 +2,7 @@ package orange_test
 
 import (
 	"net/http"
-	. "orange-cat"
+	. "github.com/utatti/orange-cat"
 	"os"
 	"os/user"
 	"path/filepath"

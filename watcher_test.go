@@ -1,7 +1,7 @@
 package orange_test
 
 import (
-	. "orange-cat"
+	. "github.com/utatti/orange-cat"
 
 	"io/ioutil"
 	"os"
