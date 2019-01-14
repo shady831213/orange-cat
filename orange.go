@@ -25,6 +25,10 @@ func (o *Orange) UseBasic() {
 	MdConverter.UseBasic()
 }
 
+func (o *Orange) UseChroma() {
+	MdConverter.UseChroma()
+}
+
 func (o *Orange) Run(files ...string) {
 	o.httpServer = NewHTTPServer(o.port)
 	o.httpServer.Listen()

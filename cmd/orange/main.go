@@ -19,6 +19,10 @@ func main() {
 			Name:  "basic, b",
 			Usage: "Use Markdown Basic(Markdown Common by default).",
 		},
+		cli.BoolFlag{
+			Name:  "chroma, c",
+			Usage: "Use chroma Markdown .",
+		},
 		cli.IntFlag{
 			Name:  "port, p",
 			Value: 6060,
@@ -30,7 +34,9 @@ func main() {
 
 		orange := orange.NewOrange(c.Int("port"))
 
-		if c.Bool("basic") {
+		if c.Bool("chroma") {
+			orange.UseChroma()
+		} else if c.Bool("basic") {
 			orange.UseBasic()
 		}
 

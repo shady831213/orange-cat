@@ -23,6 +23,14 @@ var _ = Describe("MdConverter", func() {
 		})
 	})
 
+	Describe("#mdConverter.UseChroma()", func() {
+		It("should set the converter function to the Basic one.", func() {
+			mdConverter := NewMarkdownConverter()
+			mdConverter.UseChroma()
+			// No way to check
+		})
+	})
+
 	Describe("#mdConverter.Convert()", func() {
 		It("should convert a Markdown raw data to HTML format.", func() {
 			mdConverter := NewMarkdownConverter()
@@ -34,6 +42,14 @@ var _ = Describe("MdConverter", func() {
 		It("should convert a Basic Markdown raw data.", func() {
 			mdConverter := NewMarkdownConverter()
 			mdConverter.UseBasic()
+			raw := []byte("# Hello, `world`")
+			expected := []byte("<h1>Hello, <code>world</code></h1>\n")
+			Expect(mdConverter.Convert(raw)).To(Equal(expected))
+		})
+
+		It("should convert a Chroma Markdown raw data.", func() {
+			mdConverter := NewMarkdownConverter()
+			mdConverter.UseChroma()
 			raw := []byte("# Hello, `world`")
 			expected := []byte("<h1>Hello, <code>world</code></h1>\n")
 			Expect(mdConverter.Convert(raw)).To(Equal(expected))

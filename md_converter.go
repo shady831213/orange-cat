@@ -1,7 +1,9 @@
 package orange
 
 import (
+	"github.com/Depado/bfchroma"
 	"github.com/russross/blackfriday"
+	bfv2 "gopkg.in/russross/blackfriday.v2"
 )
 
 // Global Converter
@@ -17,6 +19,12 @@ func NewMarkdownConverter() *MarkdownConverter {
 
 func (md *MarkdownConverter) UseBasic() {
 	md.convert = blackfriday.MarkdownBasic
+}
+
+func (md *MarkdownConverter) UseChroma() {
+	md.convert = func(bytes []byte) []byte {
+		return bfv2.Run(bytes, bfv2.WithRenderer(bfchroma.NewRenderer()))
+	}
 }
 
 func (md *MarkdownConverter) Convert(raw []byte) []byte {
